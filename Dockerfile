@@ -13,6 +13,9 @@
 #   limitations under the License.
 
 FROM websphere-liberty:microProfile
+USER root
+RUN chmod g+w /config/apps
+USER 1001
 COPY server.xml /config/server.xml
 COPY target/stockquote-1.0-SNAPSHOT.war /config/apps/StockQuote.war
 COPY target/liberty/wlp/usr/servers/defaultServer/dropins/javametrics-prometheus.war /config/dropins/javametrics-prometheus.war
