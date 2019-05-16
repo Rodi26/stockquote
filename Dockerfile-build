@@ -4,6 +4,11 @@ RUN apt-get update && apt-get install -y vim
 
 ENV JAVA_VERSION 1.8.0_sr5fp6
 
+RUN apt update
+RUN apt install -y wget unzip
+RUN rm -rf /var/lib/apt/lists
+USER 1001
+
 RUN set -eux; \
     ARCH="$(dpkg --print-architecture)"; \
     case "${ARCH}" in \
